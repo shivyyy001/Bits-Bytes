@@ -8,10 +8,32 @@
  *
  */
 
-
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+
+// Power function 
+int pow_func(int n , int r)
+{
+    // base case -> if r == 0 return 1.
+    if(r == 0)
+    {
+        return 1;
+    }
+    
+    // calculating power in log n time using recursion.
+    int nrb2 = pow_func(n , r/2);
+    nrb2 = nrb2 * nrb2;
+    
+    if(r%2 != 0)
+    {
+        nrb2 *= n;
+    }
+    
+    // returning n raise to power r.
+    return nrb2;
+}
+
 
 void convert_32to62()
 {
@@ -22,23 +44,27 @@ void convert_32to62()
     int array[100];
     int count = 0;
     
+    // filling the base64 array with 26 capital alphabets.
     for(int i = 0 ; i < 26 ; i++)
     {
         array[i]=(char)('A' + i);
     }
     
+    // filling the base64 array with 26 small alphabets.
     for(int i = 26 ; i < 52 ; i++)
     {
         array[i] = (char)('a' + count);
         count = count + 1;
     }
     
+    // filling the base64 array with 10 decimal numbers .
     for(int i = 52 ; i < 62 ; i++)
     {
         array[i]=(char)('a' + count);
         count = count + 1;
     }
     
+    // filling the base64 array.
     array[62]= '+';
     array[63]= '/';
     
@@ -51,12 +77,12 @@ void convert_32to62()
     {
         if(base32[i] >= 'A' && base32[i] <= 'Z')
         {
-            decimal += pow(32,powerr) * ((int)(base32[i] - 'A'));
+            decimal += pow_func(32,powerr) * ((int)(base32[i] - 'A'));
             powerr++;
         }
         else
         {
-            decimal += pow(32,powerr) * ((int)(base32[i] - '2' + 26));
+            decimal += pow_func(32,powerr) * ((int)(base32[i] - '2' + 26));
             powerr++;
         }
     }
@@ -79,7 +105,7 @@ void convert_32to62()
         printf("%c" , string_64[i]);
     }
     
-    
+    printf("\n");    
 }
 
 
