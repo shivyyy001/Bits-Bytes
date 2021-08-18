@@ -40,6 +40,6 @@ int main()
     int answer = bitAnd(x , y);
     printf("The answer of bitAnd of %d,%d is : %d\n" , x , y , answer);
  
-	return 0;
+    return 0;
 }
 
