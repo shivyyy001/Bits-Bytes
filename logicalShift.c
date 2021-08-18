@@ -1,6 +1,3 @@
-#include<stdio.h>
-
-
 /**
  * Program to implement logicalShift function.
  * Compilation : gcc logicalShift.c
@@ -15,7 +12,8 @@
 /* Sample input1  : 2271560481 4
    Sample output1 : 141972530      */ 
  
- 
+
+#include<stdio.h>
 
 // Function to implement logicalShift.
 int logicalShift(int x, int n) 
